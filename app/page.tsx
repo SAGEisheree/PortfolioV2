@@ -1,5 +1,7 @@
 import { Erica_One } from 'next/font/google';
-
+import NavItems from './components/NavItems';
+import HomeItems from './components/homeItems';
+import SkillItems from './components/SkillsItems';
 
 const ericaOne = Erica_One({
   weight: '400',
@@ -12,50 +14,32 @@ export default function Home() {
   return (
     <div className=" p-14 ">
       <div className="flex justify-between flex-row ">
+
+
         <div className='flex flex-col justify-end'>
-          <div className='[-webkit-text-stroke:1px_black]'>
-          <div className={`${ericaOne.className} text-5xl font-bold text-black transition-colors duration-200 hover:text-transparent`}>
-            SAGE
-          </div>
-          <div className={`${ericaOne.className} text-2xl font-bold`}>
-            is Heree
-          </div>
-          </div>
+          <section id="home">
+            <HomeItems />
+          </section>
+          <section id="skills">
+            <SkillItems />
+          </section>
 
+          <div className='fixed inset-0 bottom-0  pointer-events-none z-10 flex justify-start items-end pl-10 pb-10'>
+            <div>
 
-        </div>
-
-
-
-
-           <div className="[perspective:1000px]  scale-120 w-full pr-16 flex flex-col items-end">
-
-          <div className="flex flex-col items-end transform-gpu rotate-y-[-60deg] -skew-y-[4deg] origin-right">
-
-            <div className={`${ericaOne.className} text-9xl leading-[0.8] text-black`}>
-              HOME
+              <div className={`  scale-130 text-white hover:[-webkit-text-stroke:1px_black] hover:text-transparent text-5xl font-bold`}>
+                SAGE
+              </div>
+              <div className={`${ericaOne.className} scale-130 text-white hover:[-webkit-text-stroke:0.7px_black] hover:text-transparent text-2xl font-bold`}>
+                is Heree
+              </div>
             </div>
-
-            <div className={`${ericaOne.className} text-9xl leading-[0.8] text-transparent [-webkit-text-stroke:2px_black]`}>
-              SKILLS
-            </div>
-
-            <div className={`${ericaOne.className} text-9xl leading-[0.8] text-transparent [-webkit-text-stroke:2px_black]`}>
-              PROJECTS
-            </div>
-
-            <div className={`${ericaOne.className} text-9xl leading-[0.8] text-transparent [-webkit-text-stroke:2px_black]`}>
-              INTRESTS
-            </div>
-            <div className={`${ericaOne.className} text-9xl leading-[0.8] text-transparent [-webkit-text-stroke:2px_black]`}>
-              CONTACT
-            </div>
-
           </div>
         </div>
 
+        <NavItems />
 
-        
+
       </div>
     </div>
   );
