@@ -1,31 +1,40 @@
+import { Erica_One } from "next/font/google";
+
+const ericaOne = Erica_One({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+
+
 const skillGroups = [
   {
     title: "Frontend",
-    skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js"],
+    skills: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS", "React", "Next.js"],
   },
   {
-    title: "Styling",
-    skills: ["Tailwind CSS", "SCSS", "Framer Motion", "Responsive UI", "Figma to Code"],
+    title: "Languages",
+    skills: ["Python", "C++", "C", "JavaScript"],
   },
   {
     title: "Backend",
-    skills: ["Node.js", "Express", "REST APIs", "MongoDB", "Firebase"],
+    skills: ["Node.js", "FastAPI", "REST APIs", "MongoDB", "Firebase"],
   },
   {
     title: "Workflow",
-    skills: ["Git", "GitHub", "Vercel", "Component Design", "Performance Basics"],
+    skills: ["Git", "GitHub", "Vercel", "Postman", "Performance Basics"],
   },
 ];
 
 export default function SkillItems() {
   return (
-    <section className="flex min-h-screen py-16 text-black sm:py-20">
-      <div className="w-full max-w-3xl space-y-8 sm:space-y-10">
-        <div className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.4em] text-black/60">
+    <section className="flex min-h-screen py-8 text-black sm:py-20">
+      <div className="w-full max-w-4xl space-y-8 sm:space-y-10">
+        <div className="space-y-4 border-b border-black/15 pb-6">
+          <p className="text-sm uppercase tracking-[0.4em] text-[#8f3f10]">
             Current Toolkit
           </p>
-          <h2 className="text-4xl font-black uppercase sm:text-6xl lg:text-8xl">
+          <h2 className={`${ericaOne.className} text-4xl uppercase tracking-[-0.04em] sm:text-6xl lg:text-7xl`}>
             Skills
           </h2>
           <p className="max-w-2xl text-base leading-relaxed text-black/75 sm:text-lg lg:text-xl">
@@ -38,14 +47,16 @@ export default function SkillItems() {
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="rounded-3xl border border-black/15 bg-white/20 p-6 backdrop-blur-sm"
+              className="border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] p-6"
             >
-              <h3 className="mb-4 text-xl font-bold uppercase sm:text-2xl">{group.title}</h3>
-              <div className="flex flex-wrap gap-3">
+              <h3 className="mb-5 border-b border-black/10 pb-4 text-xl font-bold uppercase sm:text-2xl">
+                {group.title}
+              </h3>
+              <div className="flex flex-wrap gap-2.5 sm:gap-3">
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-black/20 px-3 py-2 text-xs font-medium uppercase tracking-[0.12em] sm:px-4 sm:text-sm"
+                    className="border border-black/20 bg-black/[0.03] px-3 py-2 text-xs font-medium uppercase tracking-[0.12em] sm:px-4 sm:text-sm"
                   >
                     {skill}
                   </span>

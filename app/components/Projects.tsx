@@ -8,47 +8,46 @@ const ericaOne = Erica_One({
 const projects = [
   {
     number: "01",
-    title: "Canvasmith",
-    subtitle: "Creative portfolio builder",
+    title: "Daydex",
+    subtitle: "Journal and progress tracker",
     description:
-      "A visual portfolio generator for designers and students with drag-and-drop sections, custom themes, and fast live previews.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+      "Journal and progress tracker for personal growth, habit building with Colorled days on calender to make sure you arent lost in the grind",
+    stack: ["FastAPI", "React", "Vite", "MongoDB"],
   },
   {
     number: "02",
-    title: "Pulseboard",
-    subtitle: "Realtime team dashboard",
+    title: "SoulDex",
+    subtitle: "Fun personality tests",
     description:
-      "A focused dashboard for tracking tasks, releases, and quick project updates with a clean interface and strong visual hierarchy.",
-    stack: ["React", "Node.js", "Socket.io", "MongoDB"],
+      "Currently has Mental Age finder, Friendship strength Analysis. Built to learn AI API integration.",
+    stack: ["GROK API", "React", "DaisyUI", "Vite"],
   },
   {
     number: "03",
-    title: "Bytebrew",
-    subtitle: "Cafe discovery web app",
+    title: "This portfolio",
+    subtitle: "PORTFOLIO",
     description:
-      "A stylish location-based app for finding work-friendly cafes, saving favorites, and browsing spaces by vibe, Wi-Fi, and coffee quality.",
-    stack: ["Next.js", "Maps API", "Prisma", "PostgreSQL"],
+      "Started as a playground to learn Frontend Styling and animations.",
+    stack: ["Next.js", "React", "Tailwind CSS"],
   },
 ];
 
 export default function ProjectsItems() {
   return (
     <section className="flex min-h-screen items-center py-16 text-black sm:py-20">
-      <div className="w-full max-w-3xl space-y-8 sm:space-y-10">
-        <div className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.4em] text-black/60">
+      <div className="w-full max-w-4xl space-y-8 sm:space-y-10">
+        <div className="space-y-4 border-b border-black/15 pb-6">
+          <p className="text-sm uppercase tracking-[0.4em] text-[#8f3f10]">
             Selected Works
           </p>
-          <h2 className={`${ericaOne.className} text-4xl uppercase sm:text-6xl lg:text-7xl`}>
+          <h2 className={`${ericaOne.className} text-4xl uppercase tracking-[-0.04em] sm:text-6xl lg:text-7xl`}>
             Projects
           </h2>
           <p
             className="max-w-2xl text-base leading-relaxed text-black/75 sm:text-lg lg:text-xl"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
-            A few imagined builds that lean into product thinking, interface
-            design, and frontend polish.
+            Projects were built for my needs or for the thing that i thought would be fun.
           </p>
         </div>
 
@@ -56,17 +55,17 @@ export default function ProjectsItems() {
           {projects.map((project) => (
             <article
               key={project.number}
-              className="grid gap-4 rounded-[1.5rem] border border-black/15 bg-white/20 p-5 backdrop-blur-sm sm:gap-5 sm:rounded-[2rem] sm:p-6"
+              className="grid gap-4 border border-black/15 bg-[linear-gradient(160deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] p-5 sm:gap-5 sm:p-6"
             >
-              <div className="text-xs uppercase tracking-[0.35em] text-black/55 sm:text-sm">
+              <div className="text-xs uppercase tracking-[0.35em] text-[#8f3f10] sm:text-sm">
                 {project.number}
               </div>
 
               <div className="space-y-3">
-                <h3 className={`${ericaOne.className} text-2xl uppercase sm:text-3xl lg:text-4xl`}>
+                <h3 className={`${ericaOne.className} text-2xl  uppercase  sm:text-3xl lg:text-4xl`}>
                   {project.title}
                 </h3>
-                <p className="text-sm uppercase tracking-[0.25em] text-[#8f3f10]">
+                <p className="border-b border-black/10 pb-3 text-sm uppercase tracking-[0.25em] text-black/60">
                   {project.subtitle}
                 </p>
                 <p
@@ -81,7 +80,7 @@ export default function ProjectsItems() {
                 {project.stack.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-black/20 px-3 py-2 text-[10px] uppercase tracking-[0.18em] sm:px-4 sm:text-xs"
+                    className="border border-black/20 bg-black/[0.03] px-3 py-2 text-[10px] uppercase tracking-[0.18em] sm:px-4 sm:text-xs"
                   >
                     {item}
                   </span>

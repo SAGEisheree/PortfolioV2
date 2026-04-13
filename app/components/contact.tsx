@@ -6,29 +6,28 @@ const ericaOne = Erica_One({
 });
 
 const contactInfo = [
-  { label: "Email", value: "sage.builds@proton.me" },
-  { label: "Instagram", value: "@sageonweb" },
-  { label: "LinkedIn", value: "linkedin.com/in/sage-dev" },
-  { label: "Location", value: "Kerala, India" },
+  { label: "X || Twitter", value: "@SAGE_7788" },
+  { label: "Email", value: " Just X for now " },
+  { label: "LinkedIn", value: " not made yet" },
+  { label: "Location", value: "India" },
 ];
 
 export default function Contact() {
   return (
     <section className="flex min-h-screen items-center py-16 text-black sm:py-20">
       <div className="w-full max-w-3xl space-y-8 sm:space-y-10">
-        <div className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.4em] text-black/60">
+        <div className="space-y-4 border-b border-black/15 pb-6">
+          <p className="text-sm uppercase tracking-[0.4em] text-[#8f3f10]">
             Let&apos;s Build
           </p>
-          <h2 className={`${ericaOne.className} text-4xl uppercase sm:text-6xl lg:text-7xl`}>
+          <h2 className={`${ericaOne.className} text-4xl uppercase  sm:text-6xl lg:text-7xl`}>
             Contact
           </h2>
           <p
             className="max-w-2xl text-base leading-relaxed text-black/75 sm:text-lg lg:text-xl"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
-            Open to freelance work, interesting collaborations, student
-            projects, and conversations about design-heavy frontend ideas.
+            Open to discuss,collab,work or idk maybe just say hi. You can expect me to be active anytime.
           </p>
         </div>
 
@@ -36,12 +35,12 @@ export default function Contact() {
           {contactInfo.map((item) => (
             <div
               key={item.label}
-              className="rounded-[1.5rem] border border-black/15 bg-white/20 p-5 backdrop-blur-sm sm:rounded-[1.75rem] sm:p-6"
+              className="border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.07))] p-5 sm:p-6"
             >
-              <p className="mb-3 text-[10px] uppercase tracking-[0.35em] text-[#8f3f10] sm:text-xs">
+              <p className="mb-3 border-b border-black/10 pb-3 text-[10px] uppercase tracking-[0.35em] text-[#8f3f10] sm:text-xs">
                 {item.label}
               </p>
-              <p className="text-xl uppercase leading-tight sm:text-2xl lg:text-3xl">
+              <p className="text-xl uppercase leading-tight tracking-[-0.02em] sm:text-2xl lg:text-3xl">
                 {item.value}
               </p>
             </div>
@@ -52,8 +51,7 @@ export default function Contact() {
           className="max-w-2xl text-sm leading-relaxed text-black/70 sm:text-base lg:text-lg"
           style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
         >
-          If the project has a strong visual angle, a fun interface challenge,
-          or just needs someone who cares about details, I am probably in.
+          Count me in if you got something creative to build
         </div>
       </div>
     </section>

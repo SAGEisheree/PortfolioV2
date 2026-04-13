@@ -74,7 +74,7 @@ export default function NavItems() {
 
   return (
     <>
-      <div className="fixed right-4 top-4 z-40 lg:hidden">
+      <div className="fixed  right-4 top-4 z-40 lg:hidden">
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
@@ -85,34 +85,36 @@ export default function NavItems() {
       </div>
 
       <div
-        className={`fixed inset-0 z-30 bg-[#ffdd00]/95 px-6 py-24 transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0  z-30 bg-[#ffdd00]/95 px-6 py-24 transition-all duration-300 lg:hidden ${
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <div className="flex h-full flex-col justify-center gap-4">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
+        <div className="flex h-full items-center justify-end [perspective:1000px]">
+          <div className="flex flex-col items-end origin-right transform-gpu rotate-y-[-60deg] -skew-y-[4deg]">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
 
-            return (
-              <button
-                type="button"
-                key={item.id}
-                onClick={() => handleScrollToSection(item.id)}
-                className={`${ericaOne.className} text-left text-4xl leading-none transition-all duration-300 sm:text-5xl ${
-                  isActive
-                    ? "translate-x-2 text-[#af0000]"
-                    : "text-transparent [-webkit-text-stroke:1.5px_black] opacity-80"
-                }`}
-              >
-                {item.label}
-              </button>
-            );
-          })}
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => handleScrollToSection(item.id)}
+                  className={`${ericaOne.className} bg-transparent p-1 text-right text-[2.8rem] leading-[0.8] transition-all duration-300 sm:text-[3.8rem] ${
+                    isActive
+                      ? "scale-110 text-[#af0000]"
+                      : "text-transparent [-webkit-text-stroke:1.5px_black] opacity-70"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      <div className="pointer-events-none fixed inset-y-0 right-0 z-20 hidden items-center pr-8 lg:flex xl:pr-10">
-        <div className="[perspective:1000px] pointer-events-auto">
+      <div className="pointer-events-none fixed  inset-y-0 right-0 z-20 hidden items-center pr-8 lg:flex xl:pr-10">
+        <div className="[perspective:1000px]  scale-130 pr-12 pointer-events-auto">
           <div className="flex flex-col items-end origin-right scale-[0.9] transform-gpu rotate-y-[-60deg] -skew-y-[4deg] xl:scale-100">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;

@@ -36,7 +36,10 @@ export default function Home() {
           </section>
         </div>
       </div>
+      <div className="">
+
       <NavItems />
+      </div>
     </div>
   );
 }
