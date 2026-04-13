@@ -20,6 +20,18 @@ const navItems = [
 export default function NavItems() {
   const [activeSection, setActiveSection] = useState("home");
 
+  const handleScrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      return;
+    }
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   useEffect(() => {
     const sections = navItems
       .map((item) => document.getElementById(item.id))
@@ -29,48 +41,54 @@ export default function NavItems() {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const updateActiveSection = () => {
+      const viewportMiddle = window.innerHeight * 0.45;
+      let closestSection = sections[0];
+      let closestDistance = Number.POSITIVE_INFINITY;
 
-        if (visibleEntries.length > 0) {
-          setActiveSection(visibleEntries[0].target.id);
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top - viewportMiddle);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = section;
         }
-      },
-      {
-        threshold: [0.35, 0.6, 0.8],
-        rootMargin: "-20% 0px -20% 0px",
-      }
-    );
+      });
 
-    sections.forEach((section) => observer.observe(section));
+      setActiveSection(closestSection.id);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
-      observer.disconnect();
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
     };
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-10 flex justify-end items-center pr-10">
+    <div className="fixed ml-96 mt-16 scale-90 inset-0 pointer-events-none z-10 flex justify-end">
       <div className="[perspective:1000px] pointer-events-auto">
         <div className="flex flex-col scale-120 items-end origin-right transform-gpu rotate-y-[-60deg] -skew-y-[4deg]">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
 
             return (
-              <div
+              <button
+                type="button"
                 key={item.id}
-                className={`${ericaOne.className} text-9xl duration-500 leading-[0.8] ${
+                onClick={() => handleScrollToSection(item.id)}
+                className={`${ericaOne.className} cursor-pointer bg-transparent text-right text-9xl leading-[0.8] transition-all duration-300 ${
                   isActive
-                    ? "text-black"
-                    : "text-transparent [-webkit-text-stroke:2px_black] "
+                    ? "text-[#af0000] scale-120 p-6"
+                    : "text-transparent [-webkit-text-stroke:2px_black] opacity-50"
                 }`}
               >
                 {item.label}
-              </div>
+              </button>
             );
           })}
         </div>

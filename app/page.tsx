@@ -2,6 +2,10 @@ import { Erica_One } from 'next/font/google';
 import NavItems from './components/NavItems';
 import HomeItems from './components/homeItems';
 import SkillItems from './components/SkillsItems';
+import Intrests from './components/intrests';
+import Contact from './components/contact';
+import ProjectsItems from './components/Projects';
+
 
 const ericaOne = Erica_One({
   weight: '400',
@@ -23,21 +27,23 @@ export default function Home() {
           <section id="skills">
             <SkillItems />
           </section>
+          <section id="projects">
+            <ProjectsItems />
+          </section>
+          <section id="interests">
+            <Intrests />
+          </section>
+          <section id="contact">
+            <Contact />
+          </section>
 
-          <div className='fixed inset-0 bottom-0  pointer-events-none z-10 flex justify-start items-end pl-10 pb-10'>
-            <div>
 
-              <div className={`  scale-130 text-white hover:[-webkit-text-stroke:1px_black] hover:text-transparent text-5xl font-bold`}>
-                SAGE
-              </div>
-              <div className={`${ericaOne.className} scale-130 text-white hover:[-webkit-text-stroke:0.7px_black] hover:text-transparent text-2xl font-bold`}>
-                is Heree
-              </div>
-            </div>
-          </div>
         </div>
 
-        <NavItems />
+
+        <div className=''>
+          <NavItems />
+        </div>
 
 
       </div>
