@@ -16,11 +16,9 @@ const ericaOne = Erica_One({
 
 export default function Home() {
   return (
-    <div className=" p-14 ">
-      <div className="flex justify-between flex-row ">
-
-
-        <div className='flex flex-col justify-end'>
+    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-14 lg:py-10">
+      <div className="flex flex-row justify-between">
+        <div className="flex min-w-0 flex-1 flex-col justify-end lg:pr-[22rem]">
           <section id="home">
             <HomeItems />
           </section>
@@ -36,17 +34,9 @@ export default function Home() {
           <section id="contact">
             <Contact />
           </section>
-
-
         </div>
-
-
-        <div className=''>
-          <NavItems />
-        </div>
-
-
       </div>
+      <NavItems />
     </div>
   );
 }

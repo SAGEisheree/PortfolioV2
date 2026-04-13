@@ -19,6 +19,7 @@ const navItems = [
 
 export default function NavItems() {
   const [activeSection, setActiveSection] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleScrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -30,6 +31,8 @@ export default function NavItems() {
       behavior: "smooth",
       block: "start",
     });
+
+    setMenuOpen(false);
   };
 
   useEffect(() => {
@@ -70,9 +73,23 @@ export default function NavItems() {
   }, []);
 
   return (
-    <div className="fixed ml-96 mt-16 scale-90 inset-0 pointer-events-none z-10 flex justify-end">
-      <div className="[perspective:1000px] pointer-events-auto">
-        <div className="flex flex-col scale-120 items-end origin-right transform-gpu rotate-y-[-60deg] -skew-y-[4deg]">
+    <>
+      <div className="fixed right-4 top-4 z-40 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          className="rounded-full border border-black/25 bg-[#ffdd00]/90 px-5 py-2 text-xs uppercase tracking-[0.35em] text-black shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm"
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-30 bg-[#ffdd00]/95 px-6 py-24 transition-all duration-300 lg:hidden ${
+          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <div className="flex h-full flex-col justify-center gap-4">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
 
@@ -81,10 +98,10 @@ export default function NavItems() {
                 type="button"
                 key={item.id}
                 onClick={() => handleScrollToSection(item.id)}
-                className={`${ericaOne.className} cursor-pointer bg-transparent text-right text-9xl leading-[0.8] transition-all duration-300 ${
+                className={`${ericaOne.className} text-left text-4xl leading-none transition-all duration-300 sm:text-5xl ${
                   isActive
-                    ? "text-[#af0000] scale-120 p-6"
-                    : "text-transparent [-webkit-text-stroke:2px_black] opacity-50"
+                    ? "translate-x-2 text-[#af0000]"
+                    : "text-transparent [-webkit-text-stroke:1.5px_black] opacity-80"
                 }`}
               >
                 {item.label}
@@ -93,6 +110,31 @@ export default function NavItems() {
           })}
         </div>
       </div>
-    </div>
+
+      <div className="pointer-events-none fixed inset-y-0 right-0 z-20 hidden items-center pr-8 lg:flex xl:pr-10">
+        <div className="[perspective:1000px] pointer-events-auto">
+          <div className="flex flex-col items-end origin-right scale-[0.9] transform-gpu rotate-y-[-60deg] -skew-y-[4deg] xl:scale-100">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => handleScrollToSection(item.id)}
+                  className={`${ericaOne.className} cursor-pointer bg-transparent p-2 text-right text-[4.2rem] leading-[0.8] transition-all duration-300 xl:text-[5.2rem] ${
+                    isActive
+                      ? "scale-110 text-[#af0000]"
+                      : "text-transparent [-webkit-text-stroke:2px_black] opacity-50"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

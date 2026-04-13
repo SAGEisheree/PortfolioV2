@@ -14,17 +14,17 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section className="flex min-h-screen scale-90 items-center py-20 text-black">
-      <div className="w-[48rem] space-y-10">
+    <section className="flex min-h-screen items-center py-16 text-black sm:py-20">
+      <div className="w-full max-w-3xl space-y-8 sm:space-y-10">
         <div className="space-y-4">
           <p className="text-sm uppercase tracking-[0.4em] text-black/60">
             Let&apos;s Build
           </p>
-          <h2 className={`${ericaOne.className} text-5xl uppercase sm:text-6xl lg:text-7xl`}>
+          <h2 className={`${ericaOne.className} text-4xl uppercase sm:text-6xl lg:text-7xl`}>
             Contact
           </h2>
           <p
-            className="max-w-3xl text-lg leading-relaxed text-black/75 sm:text-xl"
+            className="max-w-2xl text-base leading-relaxed text-black/75 sm:text-lg lg:text-xl"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
             Open to freelance work, interesting collaborations, student
@@ -32,16 +32,16 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
           {contactInfo.map((item) => (
             <div
               key={item.label}
-              className="rounded-[1.75rem] border border-black/15 bg-white/20 p-6 backdrop-blur-sm"
+              className="rounded-[1.5rem] border border-black/15 bg-white/20 p-5 backdrop-blur-sm sm:rounded-[1.75rem] sm:p-6"
             >
-              <p className="mb-3 text-xs uppercase tracking-[0.35em] text-[#8f3f10]">
+              <p className="mb-3 text-[10px] uppercase tracking-[0.35em] text-[#8f3f10] sm:text-xs">
                 {item.label}
               </p>
-              <p className="text-2xl uppercase leading-tight sm:text-3xl">
+              <p className="text-xl uppercase leading-tight sm:text-2xl lg:text-3xl">
                 {item.value}
               </p>
             </div>
@@ -49,7 +49,7 @@ export default function Contact() {
         </div>
 
         <div
-          className="max-w-2xl text-base leading-relaxed text-black/70 sm:text-lg"
+          className="max-w-2xl text-sm leading-relaxed text-black/70 sm:text-base lg:text-lg"
           style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
         >
           If the project has a strong visual angle, a fun interface challenge,
