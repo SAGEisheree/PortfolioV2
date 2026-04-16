@@ -90,7 +90,7 @@ export default function NavItems() {
         }`}
       >
         <div className="flex h-full items-center justify-end [perspective:1000px]">
-          <div className="flex flex-col items-end origin-right transform-gpu rotate-y-[-60deg] -skew-y-[4deg]">
+          <div className="flex flex-col items-end origin-right rotate-y-[-60deg] -skew-y-[4deg]">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
 
@@ -99,10 +99,10 @@ export default function NavItems() {
                   type="button"
                   key={item.id}
                   onClick={() => handleScrollToSection(item.id)}
-                  className={`${ericaOne.className} bg-transparent p-1 text-right text-[2.8rem] leading-[0.8] transition-all duration-300 sm:text-[3.8rem] ${
+                  className={`${ericaOne.className} bg-transparent p-1 text-right text-[5.8rem] leading-[0.8] transition-all duration-300 sm:text-[3.8rem] ${
                     isActive
                       ? "scale-110 text-[#af0000]"
-                      : "text-transparent [-webkit-text-stroke:1.5px_black] opacity-70"
+                      : "text-transparent [-webkit-text-stroke:1.5px_black] "
                   }`}
                 >
                   {item.label}
@@ -113,9 +113,9 @@ export default function NavItems() {
         </div>
       </div>
 
-      <div className="pointer-events-none fixed  inset-y-0 right-0 z-20 hidden items-center pr-8 lg:flex xl:pr-10">
-        <div className="[perspective:1000px]  scale-130 pr-12 pointer-events-auto">
-          <div className="flex flex-col items-end origin-right scale-[0.9] transform-gpu rotate-y-[-60deg] -skew-y-[4deg] xl:scale-100">
+      <div className="pointer-events-none fixed inset-y-0 right-0 z-20 hidden items-center pr-8 lg:flex xl:pr-0">
+        <div className="pointer-events-auto pr-12 [perspective:1000px]">
+          <div className="flex flex-col items-end origin-right rotate-y-[-60deg] -skew-y-[4deg]">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
 
@@ -124,10 +124,10 @@ export default function NavItems() {
                   type="button"
                   key={item.id}
                   onClick={() => handleScrollToSection(item.id)}
-                  className={`${ericaOne.className} cursor-pointer bg-transparent p-2 text-right text-[4.2rem] leading-[0.8] transition-all duration-300 xl:text-[5.2rem] ${
+                  className={`${ericaOne.className} cursor-pointer bg-transparent p-2 text-right text-[4.8rem] leading-[0.8] transition-all duration-300 md:text-[7.1rem] ${
                     isActive
                       ? "scale-110 text-[#af0000]"
-                      : "text-transparent [-webkit-text-stroke:2px_black] opacity-50"
+                      : "text-transparent [-webkit-text-stroke:1.7px_black] opacity-70"
                   }`}
                 >
                   {item.label}

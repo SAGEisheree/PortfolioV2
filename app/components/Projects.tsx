@@ -13,6 +13,8 @@ const projects = [
     description:
       "Journal and progress tracker for personal growth, habit building with Colorled days on calender to make sure you arent lost in the grind",
     stack: ["FastAPI", "React", "Vite", "MongoDB"],
+    repoHref: "https://github.com/SAGEisheree/Mood_metric",
+    visitHref: "https://daydex.vercel.app/",
   },
   {
     number: "02",
@@ -21,6 +23,8 @@ const projects = [
     description:
       "Currently has Mental Age finder, Friendship strength Analysis. Built to learn AI API integration.",
     stack: ["GROK API", "React", "DaisyUI", "Vite"],
+    repoHref: "https://github.com/SAGEisheree/WhoYouAre",
+    visitHref: "https://souldex.vercel.app/",
   },
   {
     number: "03",
@@ -29,6 +33,8 @@ const projects = [
     description:
       "Started as a playground to learn Frontend Styling and animations.",
     stack: ["Next.js", "React", "Tailwind CSS"],
+    repoHref: "https://github.com/SAGEisheree/PortfolioV2",
+    visitHref: "https://sageishere.vercel.app/",
   },
 ];
 
@@ -85,6 +91,32 @@ export default function ProjectsItems() {
                     {item}
                   </span>
                 ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-1">
+                <a
+                  href={project.repoHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center border border-black bg-black px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-[#ffdd00] transition-colors duration-200 hover:bg-transparent hover:text-black sm:px-5 sm:text-xs"
+                >
+                  Repo
+                </a>
+
+                {project.visitHref ? (
+                  <a
+                    href={project.visitHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center border border-black/45 bg-transparent px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-black transition-colors duration-200 hover:bg-black hover:text-[#ffdd00] sm:px-5 sm:text-xs"
+                  >
+                    Visit
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center border border-black/20 bg-black/[0.04] px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-black/45 sm:px-5 sm:text-xs">
+                    Visit Soon
+                  </span>
+                )}
               </div>
             </article>
           ))}
