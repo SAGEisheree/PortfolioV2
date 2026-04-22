@@ -37,7 +37,7 @@ export default function Intrests() {
           {interests.map((item, index) => (
             <div
               key={item}
-              className="flex items-start gap-4 border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.07))] p-4 sm:p-5"
+              className="flex items-start gap-4 border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.07))] backdrop-blur-sm p-4 sm:p-5"
             >
               <span className="min-w-10 pt-1 text-[10px] uppercase tracking-[0.35em] text-[#8f3f10] sm:text-xs">
                 0{index + 1}

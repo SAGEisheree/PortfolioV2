@@ -47,7 +47,7 @@ export default function SkillItems() {
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] p-6"
+              className="border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] backdrop-blur-sm p-6"
             >
               <h3 className="mb-5 border-b border-black/10 pb-4 text-xl font-bold uppercase sm:text-2xl">
                 {group.title}

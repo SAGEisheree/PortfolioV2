@@ -10,10 +10,10 @@ const ericaOne = Erica_One({
 });
 
 const navItems = [
-  { id: "home", label: "HOME" },
+  { id: "home", label: "ABOUT" },
   { id: "skills", label: "SKILLS" },
   { id: "projects", label: "PROJECTS" },
-  { id: "interests", label: "INTRESTS" },
+  { id: "interests", label: "INTERESTS" }, // Fixed typo
   { id: "contact", label: "CONTACT" },
 ];
 
@@ -21,28 +21,19 @@ export default function NavItems() {
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // --- Scroll Logic (Unchanged) ---
   const handleScrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
-    if (!section) {
-      return;
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setMenuOpen(false);
     }
-
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-
-    setMenuOpen(false);
   };
 
   useEffect(() => {
     const sections = navItems
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => section !== null);
-
-    if (sections.length === 0) {
-      return;
-    }
 
     const updateActiveSection = () => {
       const viewportMiddle = window.innerHeight * 0.45;
@@ -52,88 +43,76 @@ export default function NavItems() {
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const distance = Math.abs(rect.top - viewportMiddle);
-
         if (distance < closestDistance) {
           closestDistance = distance;
           closestSection = section;
         }
       });
-
-      setActiveSection(closestSection.id);
+      if (closestSection) setActiveSection(closestSection.id);
     };
 
-    updateActiveSection();
     window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
-
-    return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
-    };
+    return () => window.removeEventListener("scroll", updateActiveSection);
   }, []);
+
+  // --- Helper for Shared Styles ---
+  const getLinkStyles = (isActive: boolean) => `
+    ${ericaOne.className} bg-transparent p-1 text-right leading-[0.8] transition-all duration-300
+    ${isActive 
+      ? "scale-110 text-[#af0000] [-webkit-text-stroke:0px]" 
+      : "text-white opacity-80 hover:opacity-100 [-webkit-text-stroke:0px]"
+    }
+  `;
 
   return (
     <>
-      <div className="fixed  right-4 top-4 z-40 lg:hidden">
+      {/* Mobile Menu Button */}
+      <div className="fixed right-4 top-4 z-50 lg:hidden">
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
-          className="rounded-full border border-black/25 bg-[#ffdd00]/90 px-5 py-2 text-xs uppercase tracking-[0.35em] text-black shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm"
+          className="rounded-full border border-white/20 bg-black/50 px-5 py-2 text-xs uppercase tracking-[0.35em] text-white shadow-xl backdrop-blur-md"
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
       </div>
 
+      {/* Mobile Overlay - Now Transparent with Backdrop Blur */}
       <div
-        className={`fixed inset-0  z-30 bg-[#ffdd00]/95 px-6 py-24 transition-all duration-300 lg:hidden ${
-          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        className={`fixed inset-0 z-40 px-6 py-24 transition-all duration-300 lg:hidden ${
+          menuOpen ? "pointer-events-auto opacity-100 backdrop-blur-md bg-black/20" : "pointer-events-none opacity-0"
         }`}
       >
         <div className="flex h-full items-center justify-end [perspective:1000px]">
           <div className="flex flex-col items-end origin-right rotate-y-[-60deg] -skew-y-[4deg]">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
-
-              return (
-                <button
-                  type="button"
-                  key={item.id}
-                  onClick={() => handleScrollToSection(item.id)}
-                  className={`${ericaOne.className} bg-transparent p-1 text-right text-[5.8rem] leading-[0.8] transition-all duration-300 sm:text-[3.8rem] ${
-                    isActive
-                      ? "scale-110 text-[#af0000]"
-                      : "text-transparent [-webkit-text-stroke:1.5px_black] "
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+            {navItems.map((item) => (
+              <button
+                type="button"
+                key={item.id}
+                onClick={() => handleScrollToSection(item.id)}
+                className={`${getLinkStyles(activeSection === item.id)} text-[4.5rem] sm:text-[5.8rem]`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
+      {/* Desktop Navigation */}
       <div className="pointer-events-none fixed inset-y-0 right-0 z-20 hidden items-center pr-8 lg:flex xl:pr-0">
         <div className="pointer-events-auto pr-12 [perspective:1000px]">
           <div className="flex flex-col items-end origin-right rotate-y-[-60deg] -skew-y-[4deg]">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
-
-              return (
-                <button
-                  type="button"
-                  key={item.id}
-                  onClick={() => handleScrollToSection(item.id)}
-                  className={`${ericaOne.className} cursor-pointer bg-transparent p-2 text-right text-[4.8rem] leading-[0.8] transition-all duration-300 md:text-[7.1rem] ${
-                    isActive
-                      ? "scale-110 text-[#af0000]"
-                      : "text-transparent [-webkit-text-stroke:1.7px_black] opacity-70"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+            {navItems.map((item) => (
+              <button
+                type="button"
+                key={item.id}
+                onClick={() => handleScrollToSection(item.id)}
+                className={`${getLinkStyles(activeSection === item.id)} text-[4.8rem] md:text-[7.1rem] p-2`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

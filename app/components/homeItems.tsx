@@ -9,7 +9,7 @@ export default function HomeItems() {
   return (
     <section className="relative scale-90 flex min-h-screen items-center py-16 text-black sm:py-20">
       <div className="w-full max-w-4xl">
-        <div className=" border border-black/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.34),rgba(255,255,255,0.08))] p-6  sm:p-8 lg:p-10">
+        <div className=" border border-black/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.34),rgba(255,255,255,0.08))] backdrop-blur-sm p-6  sm:p-8 lg:p-10">
           <div className="mb-8 flex items-center gap-4">
             <div className="h-px flex-1 bg-black/20" />
             <div className="inline-block border border-[#b14405] px-4 py-3 text-[10px] uppercase tracking-[0.35em] text-[#5a2b10] sm:px-5 sm:text-xs sm:tracking-[0.45em]">

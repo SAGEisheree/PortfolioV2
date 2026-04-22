@@ -61,7 +61,7 @@ export default function ProjectsItems() {
           {projects.map((project) => (
             <article
               key={project.number}
-              className="grid gap-4 border border-black/15 bg-[linear-gradient(160deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] p-5 sm:gap-5 sm:p-6"
+              className="grid gap-4 border border-black/15 bg-[linear-gradient(160deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] backdrop-blur-sm p-5 sm:gap-5 sm:p-6"
             >
               <div className="text-xs uppercase tracking-[0.35em] text-[#8f3f10] sm:text-sm">
                 {project.number}

@@ -35,7 +35,7 @@ export default function Contact() {
           {contactInfo.map((item) => (
             <div
               key={item.label}
-              className="border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.07))] p-5 sm:p-6"
+              className="border border-black/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.07))] backdrop-blur-sm p-5 sm:p-6"
             >
               <p className="mb-3 border-b border-black/10 pb-3 text-[10px] uppercase tracking-[0.35em] text-[#8f3f10] sm:text-xs">
                 {item.label}
